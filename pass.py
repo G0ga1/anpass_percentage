@@ -19,4 +19,7 @@ class New_password:
 
     def pw_gen(self):
         """Генерация пароля"""
-        pass
+        for i in range(self.number):
+            self.pwgen.append("".join(random.sample(self.data, self.length)))
+        
+        return self.pwgen
