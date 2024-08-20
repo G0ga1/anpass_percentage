@@ -19,8 +19,9 @@ class New_password:
 
     def main(self):
         """Проверка методов в классе"""
-        for newpw in self.pw_gen():
-            print(newpw)
+        passwds = '\n'.join(self.pw_gen())
+        self.pw_record()
+        print(passwds, end='')
 
     def pw_gen(self):
         """Генерация пароля"""
@@ -30,11 +31,17 @@ class New_password:
         return self.pwgen
     
     def pw_record(self):
-        """Запись паролей в текстовый файл"""
-        pass
+        sh = os.path.join('password.txt', '*.srt')
+        if sh:
+            with open('password.txt', 'w') as file:
+                file.write('__NEW_PASSWORD__\n\n')
+                for p in range(len(self.pwgen)):
+                    pw_txt = self.pwgen[p] + '\n'
+                    file.write(pw_txt)
+                file.close()
 
 if __name__ == '__main__':
-    new_pw = New_password(num_pw=5)
+    new_pw = New_password(num_pw=12, len_pw=12)
     new_pw.main()
 else:
     print('Ой!!! Ошибка вышло!')
