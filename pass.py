@@ -12,7 +12,7 @@ class New_password:
         b = "QWERTYUIOPASDFGHJKLZXCVBNM"
         c = "0123456789"
         d = "[]{}()*'/,_-!?"
-        self.data = a + b + c + d
-        self.pwgen = []
-        self.num_pw = num_pw
-        self.len_pw = len_pw
+        self.data = a + b + c + d  # Конкатенация
+        self.pwgen = []  # Список паролей
+        self.num_pw = num_pw  # Количестов паролей
+        self.len_pw = len_pw  # Длина паролей (или количество знаков)
