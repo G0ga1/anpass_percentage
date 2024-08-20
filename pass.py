@@ -16,3 +16,7 @@ class New_password:
         self.pwgen = []  # Список паролей
         self.num_pw = num_pw  # Количестов паролей
         self.len_pw = len_pw  # Длина паролей (или количество знаков)
+
+    def pw_gen(self):
+        """Генерация пароля"""
+        pass
