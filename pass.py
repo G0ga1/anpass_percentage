@@ -44,6 +44,10 @@ class New_password:
         """Проверка пароля на надежность"""
         pass
 
+    def percent_pw_gen():
+        """Проверка в процентах"""
+        pass
+
 if __name__ == '__main__':
     new_pw = New_password(num_pw=12, len_pw=12)
     new_pw.main()
