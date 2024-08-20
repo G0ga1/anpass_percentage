@@ -4,8 +4,8 @@ class New_password:
     """
 • Генерирует 
 • Записывает
-• Выводит (записаный пароль внутри файла)
-• Проверяет (в процентном сотношениях от пороля)
+• Выводит (сгенерированный пароль(-и) внутри текстового файла)
+• Проверяет (в процентном сотношениях от каждого сгенерирового пароля)
     """
     def __init__(self, len_pw=8, num_pw=1):
         a = "qwertyuiopasdfghjklzxcvbnm"
@@ -39,6 +39,10 @@ class New_password:
                     pw_txt = self.pwgen[p] + '\n'
                     file.write(pw_txt)
                 file.close()
+
+    def ch_password(self):
+        """Проверка пароля на надежность"""
+        pass
 
 if __name__ == '__main__':
     new_pw = New_password(num_pw=12, len_pw=12)
