@@ -23,3 +23,6 @@ class New_password:
             self.pwgen.append("".join(random.sample(self.data, self.length)))
         
         return self.pwgen
+
+if __name__ == '__main__':
+    pass
