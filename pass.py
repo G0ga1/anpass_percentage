@@ -28,6 +28,10 @@ class New_password:
             self.pwgen.append("".join(random.sample(self.data, self.len_pw)))
         
         return self.pwgen
+    
+    def pw_record(self):
+        """Запись паролей в текстовый файл"""
+        pass
 
 if __name__ == '__main__':
     new_pw = New_password(num_pw=5)
