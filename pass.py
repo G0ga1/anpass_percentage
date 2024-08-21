@@ -35,6 +35,7 @@ class New_password:
         
     
     def pw_record(self):
+        """Запись в текстовый файл пароли"""
         sh = os.path.join('password.txt', '*.srt')
         if sh:
             with open('password.txt', 'w') as file:
@@ -46,6 +47,7 @@ class New_password:
 
 
     def points_record(self):
+        """Запись в текстовый файл пароли и баллы(в каждого пароле)"""
         sh = os.path.join('password.txt', '*.srt')
         if sh:
             with open('password.txt', 'w') as file:
@@ -57,6 +59,7 @@ class New_password:
 
 
     def percentage_record(self):
+        """Запись в текстовый файл пароли и проценты(в каждого пароле)"""
         sh = os.path.join('password.txt', '*.srt')
         if sh:
             with open('password.txt', 'w') as file:
