@@ -23,6 +23,7 @@ class New_password:
         print(self.nglp)
         self.ch_password()
         print('\n', self.nglp)
+        print('\n', self.percent_pw_gen())
 
     def pw_gen(self):
         """Генерация пароля"""
@@ -68,9 +69,13 @@ class New_password:
             self.nglp.append([new_pwgen[i], count])
 
 
-    def __percent_pw_gen():
+    def percent_pw_gen(self):
         """Проверка в процентах"""
-        pass
+        lpw = len(self.nglp)
+        for i in range(lpw):
+            pc = int((self.nglp[i][1] / len(self.nglp[i][0])) * 100)
+            self.nglp[i].append(min(pc, 100))
+        return self.nglp
 
 if __name__ == '__main__':
     new_pw = New_password(num_pw=12, len_pw=12)
