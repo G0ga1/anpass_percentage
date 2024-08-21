@@ -22,7 +22,7 @@ class New_password:
         """Проверка методов в классе"""
         self.pw_gen()
         self.points_chpw()
-        self.percent_pw_gen()
+        self.percent_pwgen()
         print(self.nglp)
         self.percentage_record()
 
@@ -96,7 +96,7 @@ class New_password:
             self.nglp.append([new_pwgen[i], count])
 
 
-    def percent_pw_gen(self):
+    def percent_pwgen(self):
         """Проверка в процентах"""
         lpw = len(self.nglp)
         for i in range(lpw):
