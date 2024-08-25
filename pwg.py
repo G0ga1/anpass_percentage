@@ -1,4 +1,4 @@
-import os, string, random
+import string, random
 
 class New_password:
     """
