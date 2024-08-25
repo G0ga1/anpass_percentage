@@ -1,3 +1,5 @@
+# python 3.12.5
+
 import string, random
 
 class New_password:
