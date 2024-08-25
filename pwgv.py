@@ -23,10 +23,10 @@ class New_password:
     def main(self):
         """Тут проверка каждого методов внутри main"""
         self.pw_gen()
-        self.points_chpw()
-        self.percent_pwgen()
+        #self.points_chpw()
+        #self.percent_pwgen()
         print(self.__nglp)
-        self.percentage_record()
+        #self.percentage_record()
 
 
     def pw_gen(self) -> list:
