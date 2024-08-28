@@ -2,7 +2,7 @@
 
 import string, random
 
-class New_password:
+class Pwgv:
     """
 • Генерирует 
 • Записывает
@@ -10,11 +10,7 @@ class New_password:
 • Проверяет (в процентном сотношениях от каждого сгенерирового пароля)
     """
     def __init__(self, len_pw: int=8, num_pw: int=1):
-        __a = "qwertyuiopasdfghjklzxcvbnm"
-        __b = "QWERTYUIOPASDFGHJKLZXCVBNM"
-        __c = "0123456789"
-        __d = "[]{}()*'/,_-!?"
-        self.__data = __a + __b + __c + __d  # Объединения всех символов, чисел и букв ВЕРШНЕГО НИЖНЕГО регистра
+        self.__data = ''  # Объединения всех символов, чисел и букв ВЕРШНЕГО НИЖНЕГО регистра
         self.__nglp = []  # Новый сгенерированный список из паролей (New generated list of passwords)
         self.__num_pw = num_pw  # Количестов паролей в списке
         self.__len_pw = len_pw  # Количестов знаков в паролей
@@ -29,14 +25,25 @@ class New_password:
         #self.percentage_record()
 
 
-    def pw_gen(self) -> list:
+    def pw_gen(self, low: bool=True, upp: bool=True, digits: bool=True, punctuation: bool=True) -> list:
         """Генерация пароля"""
         try:
+
             if self.__len_pw <= 7 or self.__len_pw >= 65:
                 raise SystemExit('Enter a number between 8 and 64 for this parameter len_pw')
             elif self.__num_pw < 1 or self.__num_pw >= 65:
                 raise SystemExit('Enter a number between 1 and 64 for this parameter num_pw')
             
+            # Тут выполняется выбор символов для надежного гинерацый
+            if low:
+                self.__data += string.ascii_lowercase  # будут сгенерированы ВЕРХНЕГО РЕГИСТРА
+            if upp:
+                self.__data += string.ascii_uppercase  # будут сгенерированы НИЖНИГО РЕГИСТРА
+            if digits:
+                self.__data += string.digits  # будут сгенерированы НАТУРАЛЬНЫХ ЧИСЕЛ
+            if punctuation:
+                self.__data += string.punctuation  # будут сгенерированы СПЕЦСИМВОЛОВ
+
             for i in range(self.__num_pw):
                 self.__nglp.append("".join(random.sample(self.__data, self.__len_pw)))
 
@@ -119,5 +126,5 @@ class New_password:
 
 
 if __name__ == '__main__':
-    new_pw = New_password()
+    new_pw = Pwgv()
     new_pw.main()
