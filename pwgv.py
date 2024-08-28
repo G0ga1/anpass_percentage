@@ -25,24 +25,31 @@ class Pwgv:
         #self.percentage_record()
 
 
-    def pw_gen(self, low: bool=True, upp: bool=True, digits: bool=True, punctuation: bool=True) -> list:
+    def pw_gen(self, low: bool=True, upp: bool=True, dig: bool=True, pun: bool=True) -> list:
         """Генерация пароля"""
         try:
-
             if self.__len_pw <= 7 or self.__len_pw >= 65:
+                # если менше 7 или больше 65 у len_pw то выдает ошибку
                 raise SystemExit('Enter a number between 8 and 64 for this parameter len_pw')
             elif self.__num_pw < 1 or self.__num_pw >= 65:
+                # если менше 1 или больше 65 у num_pw то выдает ошибку
                 raise SystemExit('Enter a number between 1 and 64 for this parameter num_pw')
+            for ch in [low, upp, dig, pun]:
+                # Проверка каждого аргументе если не является Логический тип
+                if not isinstance(ch, bool):
+                    raise SystemExit('Only logical type')
             
             # Тут выполняется выбор символов для надежного гинерацый
             if low:
                 self.__data += string.ascii_lowercase  # будут сгенерированы ВЕРХНЕГО РЕГИСТРА
             if upp:
                 self.__data += string.ascii_uppercase  # будут сгенерированы НИЖНИГО РЕГИСТРА
-            if digits:
+            if dig:
                 self.__data += string.digits  # будут сгенерированы НАТУРАЛЬНЫХ ЧИСЕЛ
-            if punctuation:
+            if pun:
                 self.__data += string.punctuation  # будут сгенерированы СПЕЦСИМВОЛОВ
+            if not self.__data:
+                raise SystemExit("No characters are selected for password generation")
 
             for i in range(self.__num_pw):
                 self.__nglp.append("".join(random.sample(self.__data, self.__len_pw)))
