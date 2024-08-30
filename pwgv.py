@@ -18,14 +18,14 @@ class Pwgv:
 
     def main(self):
         """Тут проверка каждого методов внутри main"""
-        self.pw_gen()
-        #self.points_chpw()
+        self.pw_gen(dig=False, pun=False)
+        p = self.points_chpw()
         #self.percent_pwgen()
-        print(self.__nglp)
-        #self.percentage_record()
+        print(p)
+        #self.pw_record()
 
 
-    def pw_gen(self, low: bool=True, upp: bool=True, dig: bool=True, pun: bool=True) -> list:
+    def pw_gen(self, pun: bool=True, dig: bool=True, upp: bool=True, low: bool=True) -> list:
         """Генерация пароля"""
         try:
             if self.__len_pw <= 7 or self.__len_pw >= 65:
@@ -98,7 +98,7 @@ class Pwgv:
             file.close()
 
 
-    def points_chpw(self) -> None:
+    def points_chpw(self) -> list:
         """Проверка пароля на надежность"""
         new_pwgen = self.__nglp
         self.__nglp = []
@@ -122,14 +122,16 @@ class Pwgv:
 
             # Добовляет новый список паролей с БАЛЛАМИ
             self.__nglp.append([new_pwgen[i], count])
+        return self.__nglp # type: ignore
 
 
-    def percent_pwgen(self) -> None:
+    def percent_pwgen(self) -> list:
         """Проверка в процентах"""
         lpw = len(self.__nglp)
         for i in range(lpw):
             pc = int((self.__nglp[i][1] / len(self.__nglp[i][0])) * 100)  # Конверт в ПРОЦЕНТАХ
             self.__nglp[i].append(min(pc, 100))  # Добовляет новый элемент ПРОЦЕНТ в список с ПАРОЛЯМИ и БАЛЛАМИ
+        return self.__nglp # type: ignore
 
 
 if __name__ == '__main__':
