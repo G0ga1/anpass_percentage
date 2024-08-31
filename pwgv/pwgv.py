@@ -18,7 +18,7 @@ class Pwgv:
 
     def main(self):
         """Тут проверка каждого методов внутри main"""
-        self.set_nglp(dig=False, pun=False)
+        self.set_nglp(False, False)
         #self.points_nglp()
         #self.percent_nglp()
         print(self.get_nglp())
