@@ -12,14 +12,6 @@ class Pwgv:
         self.__num_pw = num_pw  # Количестов паролей в списке
         self.__len_pw = len_pw  # Количестов знаков в паролей
 
-    def main(self):
-        """Тут проверка каждого методов внутри main"""
-        self.set_nglp(False, False)
-        #self.points_nglp()
-        #self.percent_nglp()
-        print(self.get_nglp())
-        #self.percentage_record()
-
     def set_nglp(self, pun: bool=True, dig: bool=True, upp: bool=True, low: bool=True) -> None:
         """генерирует новый пароль в список"""
         try:
@@ -120,8 +112,3 @@ class Pwgv:
         for i in range(lpw):
             pc = int((self.__nglp[i][1] / len(self.__nglp[i][0])) * 100)  # алгоритм конвертирования в ПРОЦЕНТАХ
             self.__nglp[i].append(min(pc, 100))  # новый элемент ПРОЦЕНТ с ПАРОЛЯМИ и БАЛЛАМИ
-
-
-if __name__ == '__main__':
-    new_pw = Pwgv()
-    new_pw.main()
