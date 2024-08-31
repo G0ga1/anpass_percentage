@@ -19,14 +19,14 @@ class Pwgv:
     def main(self):
         """Тут проверка каждого методов внутри main"""
         self.set_nglp(dig=False, pun=False)
-        #self.points_pwgen()
-        #self.percent_pwgen()
+        #self.points_nglp()
+        #self.percent_nglp()
         print(self.get_nglp())
         #self.percentage_record()
 
 
     def set_nglp(self, pun: bool=True, dig: bool=True, upp: bool=True, low: bool=True) -> None:
-        """Генерация пароля"""
+        """генерирует новый пароль в список"""
         try:
             if self.__len_pw <= 7 or self.__len_pw >= 65:
                 # если менше 7 или больше 65 у len_pw то выдает ошибку
@@ -59,11 +59,12 @@ class Pwgv:
     
 
     def get_nglp(self) -> list:
+        """выводит результат нового сгенерированного пароля, баллов и проценты виде списка"""
         return self.__nglp
         
     
-    def pwgen_record(self) -> None:
-        """Запись в текстовый файл пароли"""
+    def nglp_record(self) -> None:
+        """записывает список пароля в текстовом документе"""
         if len(self.__nglp) == 0:
             raise SystemExit('You have not generated a password')
         
@@ -76,7 +77,7 @@ class Pwgv:
 
 
     def points_record(self) -> None:
-        """Запись в текстовый файл пароли и баллы(в каждого пароле)"""
+        """записывает список пароля и баллов в текстовом документе"""
         if len(self.__nglp[0]) != 2:
             raise SystemExit('NOT generated POINTS')
         
@@ -89,7 +90,7 @@ class Pwgv:
 
 
     def percentage_record(self) -> None:
-        """Запись в текстовый файл пароли и проценты(в каждого пароле)"""
+        """записывает список пароля, баллов и проценты в текстовом документе"""
         if len(self.__nglp[0]) != 3:
             raise SystemExit('NOT generated PERCENTAGE')
         
@@ -101,8 +102,8 @@ class Pwgv:
             file.close()
 
 
-    def points_pwgen(self) -> None:
-        """Проверка пароля на надежность"""
+    def points_nglp(self) -> None:
+        """проверяет пароль, выводит виде баллов и храниться вложенном списке"""
         new_pwgen = self.__nglp
         self.__nglp = []
         for i in range(len(new_pwgen)):
@@ -127,8 +128,8 @@ class Pwgv:
             self.__nglp.append([new_pwgen[i], count])
 
 
-    def percent_pwgen(self) -> None:
-        """Проверка в процентах"""
+    def percent_nglp(self) -> None:
+        """проверяет пароль, выводит виде баллов, процентах и храниться вложенном списке"""
         lpw = len(self.__nglp)
         for i in range(lpw):
             pc = int((self.__nglp[i][1] / len(self.__nglp[i][0])) * 100)  # Конверт в ПРОЦЕНТАХ
