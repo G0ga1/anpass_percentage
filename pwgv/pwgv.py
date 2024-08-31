@@ -56,6 +56,10 @@ class Pwgv:
 
         except TypeError:
             raise SystemExit('Incorrectly entered. Enter only the number')
+    
+
+    def get_nglp(self) -> list:
+        return self.__nglp
         
     
     def pwgen_record(self) -> None:
@@ -129,10 +133,6 @@ class Pwgv:
         for i in range(lpw):
             pc = int((self.__nglp[i][1] / len(self.__nglp[i][0])) * 100)  # Конверт в ПРОЦЕНТАХ
             self.__nglp[i].append(min(pc, 100))  # Добовляет новый элемент ПРОЦЕНТ в список с ПАРОЛЯМИ и БАЛЛАМИ
-    
-
-    def get_nglp(self) -> list:
-        return self.__nglp
 
 
 if __name__ == '__main__':
