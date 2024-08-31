@@ -18,11 +18,11 @@ class Pwgv:
 
     def main(self):
         """Тут проверка каждого методов внутри main"""
-        self.pw_gen(dig=False, pun=False)
-        p = self.points_chpw()
-        #self.percent_pwgen()
+        p = self.pw_gen(dig=False, pun=False)
+        #p = self.points_chpw()
+        #p = self.percent_pwgen()
         print(p)
-        #self.pw_record()
+        #self.percentage_record()
 
 
     def pw_gen(self, pun: bool=True, dig: bool=True, upp: bool=True, low: bool=True) -> list:
