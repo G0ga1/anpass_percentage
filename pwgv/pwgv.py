@@ -18,14 +18,14 @@ class Pwgv:
 
     def main(self):
         """Тут проверка каждого методов внутри main"""
-        p = self.pw_gen(dig=False, pun=False)
-        #p = self.points_chpw()
-        #p = self.percent_pwgen()
-        print(p)
+        self.set_nglp(dig=False, pun=False)
+        #self.points_pwgen()
+        #self.percent_pwgen()
+        print(self.get_nglp())
         #self.percentage_record()
 
 
-    def pw_gen(self, pun: bool=True, dig: bool=True, upp: bool=True, low: bool=True) -> list:
+    def set_nglp(self, pun: bool=True, dig: bool=True, upp: bool=True, low: bool=True) -> None:
         """Генерация пароля"""
         try:
             if self.__len_pw <= 7 or self.__len_pw >= 65:
@@ -54,12 +54,11 @@ class Pwgv:
             for i in range(self.__num_pw):
                 self.__nglp.append("".join(random.sample(self.__data, self.__len_pw)))
 
-            return self.__nglp
         except TypeError:
             raise SystemExit('Incorrectly entered. Enter only the number')
         
     
-    def pw_record(self) -> None:
+    def pwgen_record(self) -> None:
         """Запись в текстовый файл пароли"""
         if len(self.__nglp) == 0:
             raise SystemExit('You have not generated a password')
@@ -98,7 +97,7 @@ class Pwgv:
             file.close()
 
 
-    def points_chpw(self) -> list:
+    def points_pwgen(self) -> None:
         """Проверка пароля на надежность"""
         new_pwgen = self.__nglp
         self.__nglp = []
@@ -122,16 +121,18 @@ class Pwgv:
 
             # Добовляет новый список паролей с БАЛЛАМИ
             self.__nglp.append([new_pwgen[i], count])
-        return self.__nglp # type: ignore
 
 
-    def percent_pwgen(self) -> list:
+    def percent_pwgen(self) -> None:
         """Проверка в процентах"""
         lpw = len(self.__nglp)
         for i in range(lpw):
             pc = int((self.__nglp[i][1] / len(self.__nglp[i][0])) * 100)  # Конверт в ПРОЦЕНТАХ
             self.__nglp[i].append(min(pc, 100))  # Добовляет новый элемент ПРОЦЕНТ в список с ПАРОЛЯМИ и БАЛЛАМИ
-        return self.__nglp # type: ignore
+    
+
+    def get_nglp(self) -> list:
+        return self.__nglp
 
 
 if __name__ == '__main__':
