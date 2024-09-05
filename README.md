@@ -1,3 +1,8 @@
+![pypi](https://img.shields.io/pypi/v/percent-password
+)
+![python](https://img.shields.io/pypi/pyversions/percent-password
+)
+
 __percent_password__ – это генератор паролей и конвертировает проверку в процентах.
 
 Проект состоящий из алгоритмов: 
